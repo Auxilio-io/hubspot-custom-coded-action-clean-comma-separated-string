@@ -1,7 +1,15 @@
 exports.main = async (event, callback) => {
     function processString(inputString) {
+      // Check if the input is a valid string
+      if (typeof inputString !== "string") {
+        throw new Error("Invalid input. Please provide a valid string.");
+      }
+  
+      // Define the separator regular expression
+      const separatorRegex = /\s*,\s*|\s*,\s*|\s*,\s*|\s*,\s*/;
+  
       // Remove duplicated words
-      let uniqueWords = [...new Set(inputString.split(", ").map(word => word.replace("_", " ").toLowerCase()))];
+      let uniqueWords = [...new Set(inputString.split(separatorRegex).map(word => word.replace("_", " ").toLowerCase()))];
   
       // Remove extra comma and filter out empty words
       let processedString = uniqueWords.filter(word => word !== "").join(", ");
