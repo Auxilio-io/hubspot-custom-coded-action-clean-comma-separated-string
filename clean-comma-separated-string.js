@@ -12,7 +12,7 @@ exports.main = async (event, callback) => {
       return processedString;
     }
   
-    const string = event.inputFields.formula_result_output // e.g. "Sales, marketing, Operations, , marketing, , Technology, Information technology, information_technology"
+    const string = event.inputFields.concatenatedList // e.g. "Sales, marketing, Operations, , marketing, , Technology, Information technology, information_technology"
     const cleanString = processString(string) // e.g. "Sales, Marketing, Operations, Technology, Information Technology"
   
     console.log(cleanString); 
